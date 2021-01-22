@@ -4,6 +4,7 @@ const cookieSession = require("cookie-session");
 const compression = require("compression");
 const path = require("path");
 const csurf = require("csurf");
+const secrets = require("../secrets.json");
 
 app.use(
     cookieSession({
@@ -29,6 +30,14 @@ app.use(function (req, res, next) {
 
 app.get("/league-data", (req, res) => {
     console.log("req to league made");
+    app.get(
+        `https://apiv2.apifootball.com/?action=get_standings&league_id=149&APIkey=${secrets.APIKey}`,
+        (req, res) => {
+            console.log("api call: ", res);
+        }
+    ).then((response) => {
+        console.log("API call complete, ", response);
+    });
 });
 
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
