@@ -21,8 +21,8 @@ export default function LeagueTable() {
 
     return (
         <div>
-            <table className="demo">
-                <caption>Table 1</caption>
+            <table className="table">
+                <caption>Championship Table</caption>
                 <thead>
                     <tr>
                         <th>#</th>

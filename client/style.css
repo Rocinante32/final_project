@@ -2,6 +2,7 @@ body {
     background-color: ghostwhite;
     box-sizing: border-box;
     margin: 0;
+    font-family: "Montserrat", sans-serif;
 }
 
 #navbar {
@@ -13,17 +14,25 @@ body {
     color: darkblue;
 }
 
-.demo {
+.table {
     border: 1px solid #c0c0c0;
     border-collapse: collapse;
     padding: 5px;
 }
-.demo th {
+.table th {
     border: 1px solid #c0c0c0;
     padding: 5px;
     background: #f0f0f0;
 }
-.demo td {
+.table td {
     border: 1px solid #c0c0c0;
     padding: 5px;
+}
+
+.table > tbody:nth-child(3) > tr:nth-child(n + 22) {
+    background-color: lightpink;
+}
+
+.table > tbody:nth-child(3) > tr:nth-child(n + 0) > td:nth-child(10) {
+    font-weight: bold;
 }
