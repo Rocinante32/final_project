@@ -1,3 +1,29 @@
 body {
     background-color: ghostwhite;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#navbar {
+    height: 75px;
+    background-color: skyblue;
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    color: darkblue;
+}
+
+.demo {
+    border: 1px solid #c0c0c0;
+    border-collapse: collapse;
+    padding: 5px;
+}
+.demo th {
+    border: 1px solid #c0c0c0;
+    padding: 5px;
+    background: #f0f0f0;
+}
+.demo td {
+    border: 1px solid #c0c0c0;
+    padding: 5px;
 }

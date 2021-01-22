@@ -1,0 +1,13 @@
+<iframe width="600" height="340" src="https://www.youtube.com/embed?listType=user_uploads&list=CoventryCityFC" frameborder="0" allowfullscreen></iframe>
+
+<iframe width="400" height="300" src="http://www.youtube.com/embed?max-results=1&controls=0&showinfo=0&rel=0&listType=user_uploads&list=CoventryCityFC" frameborder="0" allowfullscreen></iframe> 
+
+https://publish.twitter.com/?maxheight=700&maxwidth=350&query=https%3A%2F%2Ftwitter.com%2FCoventry_City&ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Eprofile%3ACoventry_City%7Ctwgr%5E31313337373b73686172655f736f6369616c&ref_url=https%3A%2F%2Fpublish.twitter.com%2F%23&theme=dark&widget=Timeline
+
+<iframe
+                width="720"
+                height="405"
+                src="https://www.youtube.com/embed/?listType=playlist&list=UUch_NWdo3JWKngAyO9XlycA"
+                frameborder="0"
+                allowfullscreen
+            ></iframe>
