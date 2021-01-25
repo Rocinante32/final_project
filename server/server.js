@@ -6,12 +6,21 @@ const path = require("path");
 const csurf = require("csurf");
 const secrets = require("../secrets.json");
 
-app.use(
-    cookieSession({
-        secret: `Even a bad pizza is a good pizza`,
-        maxAge: 1000 * 60 * 60 * 24 * 14,
-    })
-);
+const server = require("http").Server(app);
+const io = require("socket.io")(server, {
+    allowRequest: (req, callback) =>
+        callback(null, req.headers.referer.startsWith("http://localhost:3000")),
+});
+
+const cookieSessionMiddleware = cookieSession({
+    secret: `Even a bad pizza is a good pizza`,
+    maxAge: 1000 * 60 * 60 * 24 * 14,
+});
+
+app.use(cookieSessionMiddleware);
+io.use(function (socket, next) {
+    cookieSessionMiddleware(socket.request, socket.request.res, next);
+});
 
 app.use(
     express.urlencoded({
@@ -28,24 +37,40 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get("/league-data", (req, res) => {
-    console.log("req to league made");
-    app.get(
-        `https://apiv2.apifootball.com/?action=get_standings&league_id=149&APIkey=${secrets.APIKey}`,
-        (req, res) => {
-            console.log("api call: ", res);
-        }
-    ).then((response) => {
-        console.log("API call complete, ", response);
-    });
-});
-
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
 
-app.listen(process.env.PORT || 3001, function () {
+server.listen(process.env.PORT || 3001, function () {
     console.log("I'm listening.");
+});
+
+//////////////// Chat/Socket.io Routes /////////////////
+
+// io.on("connection", function (socket) {
+//     if (!socket.request.session) {
+//         return socket.disconnect(true);
+//     }
+
+//     // db.findLastMessages().then(({ rows }) => {
+//     //     for (let i = 0; i < rows.length; i++) {
+//     //         rows[i].created_at = rows[i].created_at.toLocaleString();
+//     //     }
+//     //     rows = rows.reverse();
+//     //     socket.emit("10 most recent messages", rows);
+//     // });
+
+//     // const user_id = socket.request.session.userId;
+// });
+
+io.on("connection", (socket) => {
+    console.log(
+        `socket with id ${socket.id} and user id: ${socket.request.session.userId} just connected!`
+    );
+    console.log(
+        "socket.request.session.userId: ",
+        socket.request.session.userId
+    );
 });

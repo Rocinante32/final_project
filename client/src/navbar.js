@@ -4,7 +4,7 @@ import { HashRouter, Route, Link } from "react-router-dom";
 export default function NavBar() {
     return (
         <div id="navbar">
-            <h3>Welcome</h3>
+            <h3>Sky Blues Fanzone</h3>
         </div>
     );
 }

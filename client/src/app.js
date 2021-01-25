@@ -9,7 +9,7 @@ export default function App() {
         <div>
             <NavBar />
             <h1>welcome to the fanzone</h1>
-            <LeagueTable />
+            {/* <LeagueTable /> */}
         </div>
     );
 }
