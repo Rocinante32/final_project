@@ -36,3 +36,18 @@ body {
 .table > tbody:nth-child(3) > tr:nth-child(n + 0) > td:nth-child(10) {
     font-weight: bold;
 }
+
+.chat-container {
+    width: 60%;
+    height: 70vh;
+    margin: auto;
+    background-color: whitesmoke;
+    padding: 5px;
+    overflow-y: auto;
+}
+
+.chat-container textarea {
+    position: absolute;
+    bottom: 0px;
+    width: 60%;
+}

@@ -49,28 +49,55 @@ server.listen(process.env.PORT || 3001, function () {
 
 //////////////// Chat/Socket.io Routes /////////////////
 
-// io.on("connection", function (socket) {
-//     if (!socket.request.session) {
-//         return socket.disconnect(true);
-//     }
+var users = [];
 
-//     // db.findLastMessages().then(({ rows }) => {
-//     //     for (let i = 0; i < rows.length; i++) {
-//     //         rows[i].created_at = rows[i].created_at.toLocaleString();
-//     //     }
-//     //     rows = rows.reverse();
-//     //     socket.emit("10 most recent messages", rows);
-//     // });
+io.on("connection", function (socket) {
+    // if (!socket.request.session) {
+    //     console.log("socket disconnected: ", socket.id);
+    //     return socket.disconnect(true);
+    // }
 
-//     // const user_id = socket.request.session.userId;
-// });
+    socket.on("username", (username) => {
+        console.log("users: ", users);
+        if (users.includes(username)) {
+            console.log("error as name already in use");
+        } else {
+            console.log("username added: ", username);
+            socket.username = username;
+            socket.request.session.username = username;
+            users.push(username);
+            console.log("users after add ", users);
+        }
+    });
+
+    socket.on("chat_message", (data) => {
+        console.log("new chat msg: ", data);
+        io.emit("chat_message", data);
+    });
+
+    socket.on("disconnect", (reason) => {
+        console.log("reason fo disc: ", reason);
+        if (socket.username) {
+            console.log("user is d/c: ", socket.username);
+            const userIdx = users.indexOf(socket.username);
+            users.splice(userIdx, 1);
+        } else {
+            console.log(
+                "socket disconnect: ",
+                socket.id,
+                "name: ",
+                socket.username
+            );
+        }
+        console.log("users after splice: ", users);
+        // return socket.disconnect(true);
+    });
+});
 
 io.on("connection", (socket) => {
     console.log(
-        `socket with id ${socket.id} and user id: ${socket.request.session.userId} just connected!`
+        `socket with id ${socket.id} and user id: ${socket.username} just connected!`
     );
-    console.log(
-        "socket.request.session.userId: ",
-        socket.request.session.userId
-    );
+    console.log("socket.request.session: ", socket.request.session);
+    console.log("users online: ", users, "num: ", users.length);
 });
