@@ -56,6 +56,8 @@ io.on("connection", function (socket) {
     //     console.log("socket disconnected: ", socket.id);
     //     return socket.disconnect(true);
     // }
+    let connectedUsersCount = Object.keys(io.sockets.sockets).length;
+    console.log("no of users connected: ", connectedUsersCount);
 
     socket.on("username", (username) => {
         console.log("users: ", users);
@@ -66,12 +68,12 @@ io.on("connection", function (socket) {
             socket.username = username;
             socket.request.session.username = username;
             users.push(username);
-            console.log("users after add ", users);
+            console.log("users after add ", users, "no online: ", users.length);
         }
     });
 
     socket.on("chat_message", (data) => {
-        console.log("new chat msg: ", data);
+        // console.log("new chat msg: ", data);
         io.emit("chat_message", data);
     });
 

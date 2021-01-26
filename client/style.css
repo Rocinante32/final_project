@@ -6,12 +6,36 @@ body {
 }
 
 #navbar {
-    height: 75px;
+    height: 100px;
     background-color: skyblue;
     display: inline-flex;
     width: 100%;
     justify-content: space-between;
     color: darkblue;
+    align-items: center;
+}
+
+#logo-link {
+    height: 100%;
+    display: contents;
+}
+
+#navbar-logo {
+    height: 85%;
+}
+
+#navlinks {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    width: 30%;
+    justify-content: space-evenly;
+}
+
+#navlinks .button {
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .table {
@@ -50,4 +74,44 @@ body {
     position: absolute;
     bottom: 0px;
     width: 60%;
+}
+
+.video-container {
+    overflow: hidden;
+    position: relative;
+    width: 85%;
+    max-height: 80%;
+    margin: auto;
+}
+
+.video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: "";
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#video-backgnd {
+    /* background-image: url("/grassDARk.jpg"); */
+    background-size: cover;
+
+    height: 100%;
+    width: 100%;
+    /* filter: grayscale(1); */
+}
+
+#video-backgnd img {
+    width: 100%;
+    object-fit: cover;
+    float: inherit;
+    filter: grayscale(1);
+    height: 100vh;
+    position: absolute;
 }
