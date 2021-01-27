@@ -7,10 +7,7 @@ const csurf = require("csurf");
 // const secrets = require("../secrets.json");
 
 const server = require("http").Server(app);
-const io = require("socket.io")(server, {
-    allowRequest: (req, callback) =>
-        callback(null, req.headers.referer.startsWith("http://localhost:3000")),
-});
+const io = require("socket.io")(server);
 
 const cookieSessionMiddleware = cookieSession({
     secret: `Even a bad pizza is a good pizza`,
