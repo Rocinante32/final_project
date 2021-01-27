@@ -1,4 +1,8 @@
 const path = require("path");
+const webpack = require("webpack");
+if (process.env.NODE_ENV !== "production") {
+    process.env.APIKey = require("./secrets").APIKey;
+}
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -33,7 +37,8 @@ module.exports = () => ({
             {
                 test: /\.js$/,
                 loader: "babel-loader",
-            }, {
+            },
+            {
                 test: /\.css$/i,
                 use: [
                     MiniCssExtractPlugin.loader,
@@ -47,7 +52,10 @@ module.exports = () => ({
             },
         ],
     },
-    plugins: [new MiniCssExtractPlugin({
-        filename: 'bundle.css',
-    })],
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "bundle.css",
+        }),
+        new webpack.EnvironmentPlugin(["APIKey"]),
+    ],
 });

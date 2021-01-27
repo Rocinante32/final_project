@@ -1,6 +1,6 @@
 import axios from "./axios";
 import React, { useState, useEffect } from "react";
-const { APIKey } = require("../../secrets.json" || process.env.APIKey);
+const { APIKey } = process.env;
 
 export default function LeagueTable() {
     const [teams, setTeams] = useState([]);
