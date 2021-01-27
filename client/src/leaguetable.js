@@ -1,6 +1,6 @@
 import axios from "./axios";
 import React, { useState, useEffect } from "react";
-const secrets = require("../../secrets.json");
+const { APIKey } = require(process.env.APIKey || "../../secrets.json");
 
 export default function LeagueTable() {
     const [teams, setTeams] = useState([]);
@@ -9,7 +9,7 @@ export default function LeagueTable() {
         console.log("useEffect running ");
         axios
             .get(
-                `https://apiv2.apifootball.com/?action=get_standings&league_id=149&APIkey=${secrets.APIKey}`
+                `https://apiv2.apifootball.com/?action=get_standings&league_id=149&APIkey=${APIKey}`
             )
             .then((response) => {
                 console.log("API call complete", response.data);
