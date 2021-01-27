@@ -17,7 +17,7 @@ export default function Chat() {
         });
         if (messages.length > 0) {
             const chat = document.getElementById("chat-container");
-            chat.scrollTo(0, 1000);
+            elemRef.current.scrollTop = elemRef.current.scrollHeight;
         }
 
         // // elemRef.current.scrollTo(0, 1000);
