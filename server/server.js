@@ -4,7 +4,6 @@ const cookieSession = require("cookie-session");
 const compression = require("compression");
 const path = require("path");
 const csurf = require("csurf");
-const secrets = require("../secrets.json");
 
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
