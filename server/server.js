@@ -66,6 +66,7 @@ io.on("connection", function (socket) {
             socket.request.session.username = username;
             users.push(username);
             console.log("users after add ", users, "no online: ", users.length);
+            io.emit("numUsers", { usersOnline: users.length });
         }
     });
 

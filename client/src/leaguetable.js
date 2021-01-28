@@ -1,6 +1,7 @@
 import axios from "./axios";
 import React, { useState, useEffect } from "react";
 const { APIKey } = process.env;
+import { Paper } from "@material-ui/core";
 
 export default function LeagueTable() {
     const [teams, setTeams] = useState([]);
@@ -20,7 +21,7 @@ export default function LeagueTable() {
     console.log("state: ", teams);
 
     return (
-        <div>
+        <Paper elevation={8}>
             <table className="table">
                 <caption>Championship Table</caption>
                 <thead>
@@ -57,6 +58,6 @@ export default function LeagueTable() {
                     ))}
                 </tbody>
             </table>
-        </div>
+        </Paper>
     );
 }
