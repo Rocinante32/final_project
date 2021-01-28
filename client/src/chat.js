@@ -13,6 +13,8 @@ export default function Chat() {
     // document.getElementsByClassName("chat-container");
 
     useEffect(() => {
+        socket.emit("getNumberUsers");
+
         socket.on("chat_message", (message) => {
             console.log("new message received: ", message);
             setNewMessages([...messages, message]);
@@ -30,7 +32,7 @@ export default function Chat() {
         return () => {
             socket.off("chat_message");
         };
-    }, [messages]);
+    }, [messages, numberUsers]);
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {

@@ -75,12 +75,17 @@ io.on("connection", function (socket) {
         io.emit("chat_message", data);
     });
 
+    socket.on("getNumberUsers", () => {
+        io.emit("numUsers", { usersOnline: users.length });
+    });
+
     socket.on("disconnect", (reason) => {
         console.log("reason fo disc: ", reason);
         if (socket.username) {
             console.log("user is d/c: ", socket.username);
             const userIdx = users.indexOf(socket.username);
             users.splice(userIdx, 1);
+            io.emit("numUsers", { usersOnline: users.length });
         } else {
             console.log(
                 "socket disconnect: ",
