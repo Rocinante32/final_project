@@ -21,7 +21,7 @@ export default function LeagueTable() {
     console.log("state: ", teams);
 
     return (
-        <Paper elevation={8}>
+        <Paper elevation={8} id="leagueTable">
             <table className="table">
                 <caption>Championship Table</caption>
                 <thead>

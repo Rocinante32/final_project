@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { socket } from "./socket";
-import { Paper } from "@material-ui/core";
+import { Paper, Button } from "@material-ui/core";
 
 export default function Chat() {
     // const chatMessages = useSelector((state) => state && state.messages);
@@ -62,11 +62,19 @@ export default function Chat() {
 
     return (
         <>
+            <h1 className="center-text">Welcome to the chat {userName}</h1>
+            <h2 className="center-text">
+                Number of users online: {numberUsers}
+            </h2>
             {!signIn && (
-                <input placeholder="username" onKeyDown={handleKeyDown} />
+                <div id="username-div">
+                    <input
+                        id="username-input"
+                        placeholder="Please enter your name here to access the chat"
+                        onKeyDown={handleKeyDown}
+                    />
+                </div>
             )}
-            <h1 className="bodyTextCol">Welcome to the chat {userName}</h1>
-            <h2>Number of users online: {numberUsers}</h2>
             <div>
                 <Paper elevation={8} id="chat-container" ref={elemRef}>
                     {messages &&
@@ -79,7 +87,7 @@ export default function Chat() {
                         ))}
                 </Paper>
                 {signIn && (
-                    <div>
+                    <div id="chat-box">
                         <textarea onKeyDown={handleNewMessage} />
                     </div>
                 )}

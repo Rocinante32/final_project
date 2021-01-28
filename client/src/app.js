@@ -29,7 +29,7 @@ export default function App() {
                         exact
                         path="/"
                         render={() => (
-                            <Timeline
+                            <Timeline id="twitter-box"
                                 dataSource={{
                                     sourceType: "profile",
                                     screenName: "Coventry_City",
