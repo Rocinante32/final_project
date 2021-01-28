@@ -8,7 +8,6 @@ import VideoPlayer from "./highlights";
 import Welcome from "./welcome";
 import Footer from "./footer";
 import NextMatch from "./next";
-import Twitter from "./twitter";
 import { Timeline } from "react-twitter-widgets";
 
 export default function App() {
