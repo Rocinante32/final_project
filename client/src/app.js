@@ -8,6 +8,8 @@ import VideoPlayer from "./highlights";
 import Welcome from "./welcome";
 import Footer from "./footer";
 import NextMatch from "./next";
+import Twitter from "./twitter";
+import { Timeline } from "react-twitter-widgets";
 
 export default function App() {
     return (
@@ -19,7 +21,16 @@ export default function App() {
                 <Route exact path="/chat" render={() => <Chat />} />
                 <Route exact path="/" render={() => <Welcome />} />
                 <Route exact path="/upcoming" render={() => <NextMatch />} />
-
+                <Timeline
+                    dataSource={{
+                        sourceType: "profile",
+                        screenName: "Coventry_City",
+                    }}
+                    options={{
+                        height: "600",
+                        width: "500",
+                    }}
+                />
                 <Footer />
             </div>
         </BrowserRouter>

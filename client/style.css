@@ -3,6 +3,7 @@ body {
     box-sizing: border-box;
     margin: 0;
     font-family: "Montserrat", sans-serif;
+    background-color: #333;
 }
 
 #navbar {
@@ -19,6 +20,8 @@ body {
     background-color: #1b365d;
     height: 65px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 
 #logo-link {
@@ -82,12 +85,22 @@ body {
     border: 1px solid #c0c0c0;
     padding: 5px;
 }
+.table > tbody:nth-child(3) > tr:nth-child(2) > td:nth-child(n + 1) {
+    border-bottom: black dashed 3px;
+}
 
-.table > tbody:nth-child(3) > tr:nth-child(n + 22) {
-    background-color: lightpink;
+.table > tbody:nth-child(3) > tr:nth-child(6) > td:nth-child(n + 1) {
+    border-bottom: black dashed 3px;
+}
+
+.table > tbody:nth-child(3) > tr:nth-child(21) > td:nth-child(n + 1) {
+    border-bottom: black dashed 3px;
 }
 
 .table > tbody:nth-child(3) > tr:nth-child(n + 0) > td:nth-child(10) {
+    font-weight: bold;
+}
+.table > tbody:nth-child(3) > tr:nth-child(n + 0) > td:nth-child(-n + 2) {
     font-weight: bold;
 }
 
@@ -150,4 +163,44 @@ body {
     color: whitesmoke;
     text-align: center;
     padding-top: 10px;
+}
+
+.club-next {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    width: 35vw;
+    margin: auto;
+    padding: 20px;
+}
+
+.club-badge {
+    display: flex;
+    flex-direction: column;
+}
+
+.club-badge img {
+    height: 100px;
+    width: 100px;
+    margin: auto;
+}
+
+.centre-text {
+    text-align: center;
+}
+
+.next-card {
+    width: min-content;
+    margin: auto;
+    padding: 20px;
+}
+
+.championship-logo {
+    width: 25vw;
+    object-fit: scale-down;
+}
+
+.logo-span {
+    display: flex;
+    justify-content: center;
 }

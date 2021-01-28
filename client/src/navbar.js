@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter, Route, Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Button, Container } from "@material-ui/core";
 
 export default function NavBar() {
     return (
