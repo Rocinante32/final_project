@@ -20,16 +20,29 @@ export default function App() {
                 <Route exact path="/chat" render={() => <Chat />} />
                 <Route exact path="/" render={() => <Welcome />} />
                 <Route exact path="/upcoming" render={() => <NextMatch />} />
-                <Timeline
-                    dataSource={{
-                        sourceType: "profile",
-                        screenName: "Coventry_City",
-                    }}
-                    options={{
-                        height: "600",
-                        width: "500",
-                    }}
-                />
+                <Link to="/upcoming" className="no-text-dec">
+                    <Route exact path="/" render={() => <NextMatch />} />
+                </Link>
+
+                <div className="welcome-widgets">
+                    <Route
+                        exact
+                        path="/"
+                        render={() => (
+                            <Timeline
+                                dataSource={{
+                                    sourceType: "profile",
+                                    screenName: "Coventry_City",
+                                }}
+                                options={{
+                                    height: "600",
+                                    width: "500",
+                                }}
+                            />
+                        )}
+                    />
+                </div>
+
                 <Footer />
             </div>
         </BrowserRouter>
